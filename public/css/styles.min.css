@@ -87,7 +87,7 @@ button:disabled {
 }
 
 .sidebar__content {
-    flex: 1;
+    flex: 20VW;
     padding: 24px;
     overflow-y: auto;
 }
