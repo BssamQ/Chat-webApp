@@ -40,6 +40,9 @@ const autoscroll = () => {
     $messages.scrollTop = $messages.scrollHeight
 }
 
+
+function chosenRoom(room) {document.querySelector("#room").value = room }
+
 //--------------------------------
 
 

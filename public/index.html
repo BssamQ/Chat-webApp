@@ -2,24 +2,52 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
     <link rel="icon" href="/images/house-chat.png">
     <link rel="stylesheet" href="/css/styles.min.css">
+
 </head>
 
 <body>
     <div class="centered-form">
         <div class="centered-form__box">
             <h1>Join</h1>
-            <form action="./home.html">
-                <label>Display name</label>
-                <input type="text" autocomplete="off" name="username" placeholder="Display name" required>
-                <label>Room</label>
-                <input type="number" autocomplete="off" name="room" placeholder="Room" required>
-                <button> Join </button>
+            <form class="middle-form" action="./home.html">
+                <div>
+                    <label>Display name</label>
+                    <input type="text" autocomplete="off" name="username" placeholder="Display name" required>
+                </div>
+                <div>
+                    <label>Room</label>
+                    <div class="room-choice">
+                        <input type="hidden" id="room" name="room" value="">
+                        <button type="button" id="b1" onclick="chosenRoom(1)"> Room 1 </button>
+                        <button type="button" id="b2" onclick="chosenRoom(2)"> Room 2 </button>
+                        <button type="button" id="b3" onclick="chosenRoom(3)"> Room 3 </button>
+                    </div>
+                </div>
+                <!-- <input type="number" autocomplete="off" name="room" placeholder="Room" required> -->
+
+                <button type="submit" class="join-button"> Join </button>
             </form>
         </div>
     </div>
+    <script>
+        function chosenRoom(room) {
+            //to change the room value depened on the clicked button
+            document.querySelector("#room").value = room
+
+            //to change the selceted button color
+            const buttons = document.querySelectorAll(".room-choice button")
+            buttons.forEach(button => {
+                button.style.backgroundColor = "#9ca3af"
+            })
+            
+            //The clicked button
+            document.querySelector(`#b${room}`).style.backgroundColor = "#111827"
+        }
+    </script>
 </body>
 
 </html>

@@ -8,10 +8,6 @@ html {
     font-size: 16px
 }
 
-input {
-    font-size: 14px
-}
-
 body {
     line-height: 1.4;
     color: #333;
@@ -30,8 +26,9 @@ label {
 }
 
 input {
+    font-size: 14px;
     border: 1px solid #eee;
-     border-radius: 999px;
+    border-radius: 999px;
     padding: 12px;
     outline: none;
     background: rgba(255,255,255,0.05);
@@ -59,7 +56,10 @@ button:disabled {
 
 .centered-form {
     background: #333744;
-    width: 100vw;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -67,14 +67,47 @@ button:disabled {
 }
 
 .centered-form__box {
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 0 17px 1px #1D1F26;
     background: #F7F7FA;
     padding: 24px;
-    width: 250px
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+}
+
+.middle-form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap:15px
+}
+
+.room-choice{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+.room-choice button {
+    background: #9ca3af;
+}
+.room-choice button:hover {
+    background: #111827;
+}
+
+.room-choice button.selected {
+    background: #111827;
 }
 
 .centered-form button {
     width: 100%
+}
+
+.join-button {
+    margin-top: auto;
 }
 
 .centered-form input {
@@ -83,7 +116,7 @@ button:disabled {
 }
 
 .chat {
-    display: flex
+    display: flex;
 }
 
 .sidebar__content {
@@ -107,11 +140,17 @@ button:disabled {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+@media (max-widh: 600px){
+    .chat__sidebar{
+        width: 135px
+    }
+}
 .chat__sidebar {
     height: 100vh;
     background: #111827;
     color: #ffffff;
-    width: 25vw;
+    width: 240px;
+    flex-shrink: 0;
     overflow-y: scroll
 }
 .chat__sidebar li {
@@ -159,14 +198,14 @@ button:disabled {
 } */
 .message.incoming {
   align-self: flex-start; /*------> here where to manipulate the place <------*/
-  background-color: rgba(232,185,117,0.10);
+  background-color: rgba(94, 75, 47, 0.1);
   color: #000;
   border-radius: 18px 18px 18px 4px; /* Flattens bottom-left corner */
 }
 
 .message.outgoing {
   align-self: flex-end; /*------> here where to manipulate the place <------*/
-  background-color: rgba(94, 75, 47, 0.1);
+  background-color: rgba(232,185,117,0.10);
   color: #000;;
   border-radius: 18px 18px 4px 18px; /* Flattens bottom-right corner */
 }
@@ -178,7 +217,7 @@ button:disabled {
   right: -8px;
   width: 0;
   height: 0;
-  border-left: 10px solid #d2d2d5;  /* Same color as the background */
+  border-left: 10px solid #e5e5ea;  /* Same color as the background */
   border-top: 10px solid transparent;
   border-bottom: 0px solid transparent;
 }
@@ -190,7 +229,7 @@ button:disabled {
   left: -8px;
   width: 0;
   height: 0;
-  border-right: 10px solid #e5e5ea; /* Same color as the background */
+  border-right: 10px solid #d2d2d5; /* Same color as the background */
   border-top: 10px solid transparent;
   border-bottom: 0px solid transparent;
 }
@@ -236,6 +275,60 @@ button:disabled {
     font-size: 14px
 }
 
+@media (max-width: 600px) {
+    .chat__sidebar {
+        width: 135px;
+    }
+
+    .sidebar__content {
+        padding: 12px 8px;
+    }
+
+    .sidebar__room_title {
+        font-size: 20px;
+    }
+
+    .chat__sidebar li {
+        padding: 8px;
+        font-size: 15px;
+    }
+
+    .chat__messages {
+        padding: 16px 12px 0;
+    }
+
+    .message {
+        max-width: 90%;
+        margin: 6px;
+    }
+
+    .compose {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .compose form {
+        gap: 8px;
+    }
+
+    .compose input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .compose button {
+        padding: 11px 13px;
+        font-size: 14px;
+    }
+
+    #send-location {
+        width: 86px;
+        white-space: normal;
+        line-height: 1.2;
+    }
+}
+
+
 .room-title {
     font-weight: 400;
     font-size: 22px;
@@ -250,23 +343,6 @@ button:disabled {
     padding: 12px 24px 0
 }
 
-.users {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    margin-bottom: 8px;
-    padding: 10px 12px;
-
-    border-radius: 8px;
-
-    color: #e5e7eb;
-    font-size: 15px;
-
-    transition:
-        background-color 0.2s,
-        color 0.2s;
-}
 .user-status {
     width: 8px;
     height: 8px;
