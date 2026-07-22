@@ -37,7 +37,7 @@ const autoscroll = () => {
     // if(containerHeight - newMessageHeight <= scrollOffset){
     //     $messages.scrollTop = $messages.scrollHeight 
     // }
-    $messages.scrollTop = $messages.scrollHeight 
+    $messages.scrollTop = $messages.scrollHeight
 }
 
 //--------------------------------
@@ -53,13 +53,14 @@ socket.on("message", (message) => {
         username: message.username
     })
     $messages.insertAdjacentHTML("beforeend", html)
+    // $messages.lastElementChild.classList.add("admin")
     autoscroll()
 })
 //----------------------------------
 //Send message
 $chatForm.addEventListener("submit", (e) => {
     e.preventDefault()
-    $messageFormButton.setAttribute("disabled", "disabled")//disabling the button to evade the dublication
+    $messageFormButton.setAttribute("disabled", "disabled")//disabling the button to evade the duplication
 
     const message = e.target.elements.sendMessage.value
     if (message.trim() === "") { //check if the message is empty
@@ -84,7 +85,7 @@ $chatForm.addEventListener("submit", (e) => {
     })
 })
 //send it
-socket.on("receiveMessage", (message) => { //#4
+socket.on("receiveMessage", (message, id) => { //#4
 
     const html = Mustache.render(messageTemplate, {
         message: message.text,
@@ -92,6 +93,12 @@ socket.on("receiveMessage", (message) => { //#4
         username: message.username
     })
     $messages.insertAdjacentHTML("beforeend", html)
+
+    if (socket.id === id) {
+        $messages.lastElementChild.classList.add("outgoing")
+    } else {
+        $messages.lastElementChild.classList.add("incoming")
+    }
     autoscroll()
 })
 //----------------------------------
@@ -112,7 +119,7 @@ $sendLocation.addEventListener("click", () => {
     })
 })
 //Send the location 
-socket.on("locationMessage", (message) => {
+socket.on("locationMessage", (message, id) => {
     console.log(message)
     const html = Mustache.render(locationTemplate, {
         url: message.url,
@@ -120,9 +127,15 @@ socket.on("locationMessage", (message) => {
         username: message.username
     })
     $messages.insertAdjacentHTML("beforeend", html)
+        if (socket.id === id) {
+        $messages.lastElementChild.classList.add("outgoing")
+    } else {
+        $messages.lastElementChild.classList.add("incoming")
+    }
+    autoscroll()
 })
 
-socket.on("roomData", ({room, users}) =>{
+socket.on("roomData", ({ room, users }) => {
     const html = Mustache.render(sidebarTemplate, {
         room,
         users

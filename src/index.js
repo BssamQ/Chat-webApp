@@ -54,13 +54,13 @@ io.on("connection", (socket) => {
             return callback("Profanity is not allwoed!")
         }
         const user = getUser(socket.id)
-        io.to(user.room).emit("receiveMessage", generateMessage(message, user.username))//#3
+        io.to(user.room).emit("receiveMessage", generateMessage(message, user.username), socket.id)//#3
         callback("Message Send!")
     })
 
     socket.on("sendLocation", (cords, callback) => {
         const user = getUser(socket.id)
-        io.to(user.room).emit("locationMessage", generateLocation(`https://google.com/maps?q=${cords.lantitude},${cords.longitude}`, user.username))
+        io.to(user.room).emit("locationMessage", generateLocation(`https://google.com/maps?q=${cords.lantitude},${cords.longitude}`, user.username), socket.id)
         callback()
     })
 

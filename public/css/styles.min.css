@@ -31,27 +31,30 @@ label {
 
 input {
     border: 1px solid #eee;
+     border-radius: 999px;
     padding: 12px;
-    outline: none
+    outline: none;
+    background: rgba(255,255,255,0.05);
 }
 
 button {
     cursor: pointer;
     padding: 12px;
-    background: #7C5CBF;
+    background: #111827;
     border: none;
-    color: #fff;
+    color: #E7E6F2;
     font-size: 16px;
-    transition: background .3s ease
+    transition: background .3s ease;
+    border-radius: 20px;
 }
 
 button:hover {
-    background: #6b47b8
+    background: #9ca3af;
 }
 
 button:disabled {
     cursor: default;
-    background: #7c5cbf94
+    background: #9ca3af;
 }
 
 .centered-form {
@@ -83,12 +86,50 @@ button:disabled {
     display: flex
 }
 
+.sidebar__content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+.sidebar__room_title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+    color: #9ca3af;
+}
+.sidebar__usersLabel {
+    margin-bottom: 8px;
+    margin-left: 8px;
+    color: #9ca3af;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 .chat__sidebar {
     height: 100vh;
-    color: #fff;
-    background: #333744;
-    width: 225px;
+    background: #111827;
+    color: #ffffff;
+    width: 25vw;
     overflow-y: scroll
+}
+.chat__sidebar li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 8px;
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    color: #e5e7eb;
+    font-size: 15px;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
 }
 
 .chat__main {
@@ -105,8 +146,55 @@ button:disabled {
 }
 
 .message {
-    margin-bottom: 16px
+    position: relative;
+    max-width: 75%;
+    padding: 12px 16px;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 10px;
 }
+/* .message.admin{
+    display: flex;
+    align-items: center;
+} */
+.message.incoming {
+  align-self: flex-start; /*------> here where to manipulate the place <------*/
+  background-color: rgba(232,185,117,0.10);
+  color: #000;
+  border-radius: 18px 18px 18px 4px; /* Flattens bottom-left corner */
+}
+
+.message.outgoing {
+  align-self: flex-end; /*------> here where to manipulate the place <------*/
+  background-color: rgba(94, 75, 47, 0.1);
+  color: #000;;
+  border-radius: 18px 18px 4px 18px; /* Flattens bottom-right corner */
+}
+
+.message.outgoing::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -8px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid #d2d2d5;  /* Same color as the background */
+  border-top: 10px solid transparent;
+  border-bottom: 0px solid transparent;
+}
+
+.message.incoming::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid #e5e5ea; /* Same color as the background */
+  border-top: 10px solid transparent;
+  border-bottom: 0px solid transparent;
+}
+
 
 .message__name {
     font-weight: 600;
@@ -163,7 +251,28 @@ button:disabled {
 }
 
 .users {
-    list-style-type: none;
-    font-weight: 300;
-    padding: 12px 24px 0
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 8px;
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    color: #e5e7eb;
+    font-size: 15px;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+.user-status {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #22c55e;
+
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
 }
