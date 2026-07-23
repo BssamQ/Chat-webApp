@@ -3,7 +3,7 @@
 
 <head>
     <title>Chat App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" , user-scalable=no>
     <link rel="icon" href="/images/house-chat.png">
     <link rel="stylesheet" href="/css/styles.min.css">
 </head>
@@ -15,8 +15,13 @@
     <div class="chat">
 
         <div id="sidebar" class="chat__sidebar">
+            <div class="toggle-button">
+                <button>☰</button>
+                <!-- <ul class="online-indicator">
+                    <li><span class="user-status"></span>2/10</li>
+                </ul> -->
+            </div>
 
-            <button class="toggle-button">☰</button>
 
         </div>
 
@@ -33,7 +38,7 @@
                     <button id="messageFormButton">Send</button>
                 </form>
 
-                <button id="send-location">Send location</button>
+                <button class="location-button" id="send-location">Send location</button>
             </div>
 
 

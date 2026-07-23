@@ -187,6 +187,7 @@ button:disabled {
 .sidebar__room_title {
     display: flex;
     justify-content: center;
+    margin-top: 55px;
     margin-bottom: 12px;
     color: #9ca3af;
 }
@@ -296,10 +297,6 @@ button:disabled {
     font-size: 14px
 }
 
-.message a {
-    color: #0070CC
-}
-
 /* ---------------------------------------- */
 /* Input message */
 .compose {
@@ -317,7 +314,7 @@ button:disabled {
 
 .compose input {
     border: 1px solid #eee;
-    width: 100%;
+    /* width: 100%; */
     padding: 12px;
     margin: 0 16px 0 0;
     flex-grow: 1
@@ -326,60 +323,47 @@ button:disabled {
 .compose button {
     font-size: 14px
 }
+.location-button { 
+    display: none; /* good feature but 8roshh.. so i disable it */
+}
 
 /* ---------------------------------------- */
+@media (max-width: 768px) {
+    .chat {
+        display: block;
+        position: relative;
+    }
 
-
-
-@media (max-width: 600px) {
     .chat__sidebar {
-        width: 135px;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 60px;
+        height: 100vh;
+
+        z-index: 1000;
+        transition: width 0.3s ease;
     }
 
-    .sidebar__content {
-        padding: 12px 8px;
+    .chat.open .chat__sidebar {
+        width: 30%;
+        max-width: 300px;
     }
 
-    .sidebar__room_title {
-        font-size: 20px;
+    .chat__main {
+        min-height: 100vh;
+        margin-left: 60px;
+        padding: 25px 15px;
+        transition: margin-left 0.3s ease;
     }
 
-    .chat__sidebar li {
-        padding: 8px;
-        font-size: 15px;
+    .chat.open .chat__main {
+        margin-left: 25%;
     }
 
-    .chat__messages {
-        padding: 16px 12px 0;
-    }
-
-    .message {
-        max-width: 90%;
-        margin: 6px;
-    }
-
-    .compose {
-        gap: 8px;
-        padding: 10px;
-    }
-
-    .compose form {
-        gap: 8px;
-    }
-
-    .compose input {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .compose button {
-        padding: 11px 13px;
-        font-size: 14px;
-    }
-
-    #send-location {
-        width: 86px;
-        white-space: normal;
-        line-height: 1.2;
+    .sidebar-content {
+        width: 100%;
+        min-width: 250px;
     }
 }
