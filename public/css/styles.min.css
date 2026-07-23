@@ -235,6 +235,7 @@ button:disabled {
     font-size: 15px;
     line-height: 1.4;
     margin: 10px;
+    overflow-wrap: break-word;
 }
 
 /* .message.admin{
