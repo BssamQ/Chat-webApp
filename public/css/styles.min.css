@@ -319,7 +319,8 @@ button:disabled {
     display: flex;
     flex-shrink: 0;
     margin-top: 16px;
-    padding: 24px
+    padding: 24px;
+    margin-bottom: 30px;
 }
 
 .compose form {
