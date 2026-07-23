@@ -3,7 +3,7 @@
 
 <head>
     <title>Chat App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/house-chat.png">
     <link rel="stylesheet" href="/css/styles.min.css">
 </head>
@@ -15,14 +15,9 @@
     <div class="chat">
 
         <div id="sidebar" class="chat__sidebar">
-            <div class="toggle-button">
+            <!-- <div class="toggle-button">
                 <button>☰</button>
-                <!-- <ul class="online-indicator">
-                    <li><span class="user-status"></span>2/10</li>
-                </ul> -->
-            </div>
-
-
+            </div> -->
         </div>
 
 
@@ -34,7 +29,8 @@
             <div class="compose">
 
                 <form id="chatForm">
-                    <input  class id="messageFormInput" autocomplete="off" name="sendMessage" placeholder="Write a message...">
+                    <input class id="messageFormInput" autocomplete="off" name="sendMessage"
+                        placeholder="Write a message...">
                     <button id="messageFormButton">Send</button>
                 </form>
 
@@ -48,6 +44,9 @@
     <!-- Sidebar render -->
 
     <script id="sidebar-template" type="text/html">
+        <div class="toggle-button">
+                <button>☰</button>
+        </div>
         <div class="sidebar__content">
             <h3 class="sidebar__room_title">Room {{room}}</h3>
             <p class="sidebar__usersLabel">Users</p>
@@ -86,7 +85,7 @@
     </script>
     <!-- ----------------------------------------------------------------- -->
 
-    <script>
+    <!-- <script>
         const chat = document.querySelector(".chat")
         const button = document.querySelector(".toggle-button")
 
@@ -98,7 +97,7 @@
                 button.textContent = "☰"
             }
         })
-    </script>
+    </script> -->
 
 
 

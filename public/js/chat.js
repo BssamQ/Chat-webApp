@@ -143,8 +143,20 @@ socket.on("roomData", ({ room, users }) => {
         room,
         users
     })
-    document.querySelector("#sidebar").insertAdjacentHTML("beforeend", html)
-    // document.querySelector("#sidebar").innerHTML = html
+    // document.querySelector("#sidebar2").insertAdjacentHTML("beforeend", html)
+    document.querySelector("#sidebar").innerHTML = html
+
+            const chat = document.querySelector(".chat")
+        const button = document.querySelector(".toggle-button")
+
+        button.addEventListener("click", () => {
+            chat.classList.toggle("open")
+            if (chat.classList.contains("open")) {
+                button.textContent = "<="
+            } else {
+                button.textContent = "☰"
+            }
+        })
 })
 
 socket.emit("join", { username, room }, (error) => {
