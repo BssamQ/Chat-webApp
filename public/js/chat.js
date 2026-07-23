@@ -41,7 +41,7 @@ const autoscroll = () => {
 }
 
 
-function chosenRoom(room) {document.querySelector("#room").value = room }
+const chosenRoom = (room) =>  document.querySelector("#room").value = room 
 
 //--------------------------------
 
@@ -143,7 +143,8 @@ socket.on("roomData", ({ room, users }) => {
         room,
         users
     })
-    document.querySelector("#sidebar").innerHTML = html
+    document.querySelector("#sidebar").insertAdjacentHTML("beforeend", html)
+    // document.querySelector("#sidebar").innerHTML = html
 })
 
 socket.emit("join", { username, room }, (error) => {
