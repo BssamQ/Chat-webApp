@@ -41,7 +41,7 @@ const autoscroll = () => {
 }
 
 
-const chosenRoom = (room) =>  document.querySelector("#room").value = room 
+const chosenRoom = (room) => document.querySelector("#room").value = room
 
 //--------------------------------
 
@@ -130,7 +130,7 @@ socket.on("locationMessage", (message, id) => {
         username: message.username
     })
     $messages.insertAdjacentHTML("beforeend", html)
-        if (socket.id === id) {
+    if (socket.id === id) {
         $messages.lastElementChild.classList.add("outgoing")
     } else {
         $messages.lastElementChild.classList.add("incoming")
@@ -139,24 +139,26 @@ socket.on("locationMessage", (message, id) => {
 })
 
 socket.on("roomData", ({ room, users }) => {
+    const onlineNo = users.length
     const html = Mustache.render(sidebarTemplate, {
         room,
-        users
+        users,
+        onlineNo
     })
     // document.querySelector("#sidebar2").insertAdjacentHTML("beforeend", html)
     document.querySelector("#sidebar").innerHTML = html
 
-            const chat = document.querySelector(".chat")
-        const button = document.querySelector(".toggle-button")
+    const chat = document.querySelector(".chat")
+    const button = document.querySelector(".toggle-button")
 
-        button.addEventListener("click", () => {
-            chat.classList.toggle("open")
-            if (chat.classList.contains("open")) {
-                button.textContent = "<="
-            } else {
-                button.textContent = "☰"
-            }
-        })
+    button.addEventListener("click", () => {
+        chat.classList.toggle("open")
+        if (chat.classList.contains("open")) {
+            button.textContent = "<="
+        } else {
+            button.textContent = "☰"
+        }
+    })
 })
 
 socket.emit("join", { username, room }, (error) => {
