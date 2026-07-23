@@ -317,7 +317,8 @@ button:disabled {
     /* width: 100%; */
     padding: 12px;
     margin: 0 16px 0 0;
-    flex-grow: 1
+    flex-grow: 1;
+    font-size:16px
 }
 
 .compose button {
@@ -359,7 +360,7 @@ button:disabled {
     }
 
     .chat.open .chat__main {
-        margin-left: 25%;
+        margin-left: 20%;
     }
 
     .sidebar-content {
